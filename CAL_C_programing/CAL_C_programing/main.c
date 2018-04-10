@@ -19,26 +19,12 @@ int main(void)
 {
 	DDRA = ALL_ON;
 	PORTA = 0xfe;
-	int led_state = 0;
 	
 	//loop for blinking 
 	while(1) //we can put there true or 1 
 	{
-		
-		if(led_state)
-		{
-			led_on(3);
-			led_state = 1;
-		}
-		else
-		{
-			led_off(3);
-			led_state = 0;
-		}
-		
-		//calling functions 
-		//led_on(4);
-		//led_off(4);
+		led_on(3);
+		led_off(3);
 	}
 }
 	void led_on(int led_no)
@@ -50,7 +36,7 @@ int main(void)
 	
 	void led_off(int led_no)
 	{
-		PORTA = ~(1<<led_no);
+		PORTA = (1<<led_no);
 		_delay_ms(500);
 		return;
 	}
